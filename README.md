@@ -10,6 +10,7 @@ _This program will be a simple Scrabble score calculator. Enter a word and calcu
 
 ## Specs
 
+_Specs for main program function LetterValues()_
 
 | BEHAVIOR                                | INPUT       | OUTPUT |
 |-----------------------------------------|-------------|--------|
@@ -18,7 +19,6 @@ _This program will be a simple Scrabble score calculator. Enter a word and calcu
 | Do not score punctuation                | "don't"     | 5      |
 | Do not score numbers                    | "1"         | 0    |
 | Calculate score for mixed case words    | "SPaghETti" | 15     |
-| Calculate score for multiple words      | "do not"    | 6      |
 
 ## Setup/Installation Requirements
 

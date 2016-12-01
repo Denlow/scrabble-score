@@ -1,10 +1,14 @@
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System;
 
 namespace ScrabbleScore.Objects
 {
 	public class ScoreCalculator
 	{
+		public string wordToCheck { get; set; }
+		public string wordScore { get; set; }
+
 		private List<Tuple<List<Char>, int>> _letterValueList = new List<Tuple<List<Char>, int>>
 		{
 			Tuple.Create(new List<Char> {'a','e','i', 'o', 'u', 'l', 'n', 'r', 's', 't'}, 1),
@@ -24,9 +28,14 @@ namespace ScrabbleScore.Objects
 			// {{'q', 'z'}, 10}
 		};
 
+		public ScoreCalculator(string word)
+		{
+			wordToCheck = word;
+		}
+
 		public int LetterValues(string word)
 		{
-			int wordScore = 0;
+			int currentScore = 0;
 			foreach (char letter in word)
 			{
 				foreach (Tuple<List<Char>, int> tuplePair in _letterValueList)
@@ -35,13 +44,28 @@ namespace ScrabbleScore.Objects
 					int letterValue = tuplePair.Item2;
 					if (letterList.Contains(letter))
 					{
-						wordScore += letterValue;
+						currentScore += letterValue;
 					}
 				}
-				Console.WriteLine("Letter checked = "+letter);
-				Console.WriteLine(word +": "+wordScore);
 			}
-			return wordScore;
+			return currentScore;
+		}
+
+		public void Main(string userWord)
+		{
+			string output;
+			string lowerWord = userWord.ToLower();
+			string pattern = "[^a-z\']";
+			Regex badCharacters = new Regex(pattern);
+			if (!badCharacters.IsMatch(lowerWord))
+			{
+				output = LetterValues(lowerWord).ToString();
+			}
+			else
+			{
+				output = "Error: Bad Input. Please enter a single word without punctuation.";
+			}
+			wordScore = output;
 		}
 	}
 }
