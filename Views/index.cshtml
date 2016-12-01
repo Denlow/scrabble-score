@@ -10,14 +10,20 @@
 			<h1>Scrabble Score Calculator</h1>
 			<br>
 			<p>Enter a word in the form below and press 'Calculate' to display the Scrabble score of your word.</p>
-			<form action="/result" method="get">
-				<input type="text" name="user-word" value="">
-				<button type="submit" class="btn btn-default">Calculate</button>
-			</form>
+			<div class="row">
+				<form action="/result" method="get">
+					<div class="form-group">
+						<input class="form-control" type="text" name="user-word" value="">
+					</div>
+					<button type="submit" class="btn btn-default">Calculate</button>
+				</form>
+			</div>
 			@if (Model != null)
 			{
-				<p>Word: @Model.wordToCheck</p>
-				<p>Score: @Model.wordScore</p>
+				<div class="row">
+					<p>Word: @Model.wordToCheck</p>
+					<p>Score: @Model.wordScore</p>
+				</div>	
 			}
 		</div>
 	</body>

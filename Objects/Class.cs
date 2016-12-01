@@ -55,7 +55,7 @@ namespace ScrabbleScore.Objects
 		{
 			string output;
 			string lowerWord = userWord.ToLower();
-			string pattern = "[^a-z\']";
+			string pattern = "[^a-z\'\\s]";
 			Regex badCharacters = new Regex(pattern);
 			if (!badCharacters.IsMatch(lowerWord))
 			{
